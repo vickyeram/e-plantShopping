@@ -25,7 +25,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-    if(item.quantity > 1)
+    if (item.quantity > 1)
       dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
     else
       dispatch(removeItem(item.name))
@@ -41,7 +41,12 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleCheckoutShopping = () => {
-    alert('Functionality to be added for future reference');
+    if (cart.length === 0) {
+      alert("Your cart is empty. Please add items before checking out.");
+      return;
+    }
+    const totalAmount = calculateTotalAmount();
+    alert(`Order confirmed! Total: $${totalAmount.toFixed(2)}. Thank you!`);
   };
 
   return (
@@ -65,10 +70,10 @@ const CartItem = ({ onContinueShopping }) => {
           </div>
         ))}
       </div>
-      {cart.length === 0 && 
-      <div>
-        Your cart is empty or contains invalid items. Please add valid products to proceed.
-      </div>
+      {cart.length === 0 &&
+        <div>
+          Your cart is empty or contains invalid items. Please add valid products to proceed.
+        </div>
       }
       <div style={{ marginTop: '20px', color: 'black' }} className='total_cart_amount'></div>
       <div className="continue_shopping_btn">
