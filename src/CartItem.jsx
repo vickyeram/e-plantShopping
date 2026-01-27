@@ -45,8 +45,7 @@ const CartItem = ({ onContinueShopping }) => {
       alert("Your cart is empty. Please add items before checking out.");
       return;
     }
-    const totalAmount = calculateTotalAmount();
-    alert(`Order confirmed! Total: $${totalAmount.toFixed(2)}. Thank you!`);
+    alert("Comming soon");
   };
 
   return (
